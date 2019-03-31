@@ -10,7 +10,7 @@
     state: started
   register: nrpe_status
 
-- name: Delete nrpe config if config exist and nrpe is down
+- name: Delete nrpe xinetd config if config exist and nrpe service is down
   file:
     path: /etc/xinetd.d/nrpe
     state: absent
