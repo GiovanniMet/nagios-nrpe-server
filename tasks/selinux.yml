@@ -1,0 +1,17 @@
+---
+# Nagios NRPE Selinux for RedHat based OS's
+# The EPEL repo is required for this package
+- name: Install Nagios NRPE selinux package [RedHat]
+  yum: name=nrpe-selinux state=present
+
+# Update Nagios NRPE Selinux policy
+- name: Update Nagios NRPE Selinux policy
+  file:
+    path: /etc/nagios/nrpe_ansible.cfg
+    owner: root
+    group: root
+    mode: 0644
+    selevel: s0
+    serole: object_r
+    setype: nrpe_etc_t
+    seuser: system_u

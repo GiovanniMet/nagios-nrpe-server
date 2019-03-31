@@ -40,7 +40,6 @@ You can find out your servers FQDN by running the [Ansible Setup](http://docs.an
 Role Variables
 --------------
 
-  * *nagios_nrpe_server_bind_address*: 127.0.0.1
   * *nagios_nrpe_server_port*: 5666
   * *nagios_nrpe_server_allowed_hosts*: 127.0.0.1
   * *nagios_nrpe_command*: see example playbook section
@@ -90,20 +89,22 @@ Example Playbook
 ----------------
 
 ```yaml
-- hosts: servers
+- hosts: all
   roles:
-     - mooash.nagios-nrpe-server
-   vars:
+     - giovannimet.nagios_nrpe_server
+  vars:
      nagios_nrpe_server_allowed_hosts:
-       - 192.168.0.1
+       - 217.194.6.109
+       - 212.25.160.15
+       - 85.94.223.132
        - 127.0.0.1
      nagios_nrpe_command:
-       oracle_tnsping:
-         script: check_oracle_health
-         option: --mode tnsping
-       oracle_connection-time:
-         script: check_oracle_health
-         option: --mode connection-time
+       check_disk:
+         script: check_disk
+         option: -w 20% -c 10% -A
+       check_raid:
+         script: check_raid
+         option: -p mdstat
 ```
 
 License

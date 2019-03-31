@@ -54,3 +54,18 @@
     name: "{{ nagios_nrpe_server_service }}"
     state: started
     enabled: yes
+
+# Configure Selinux
+- name: Install Selinux and configure it if Redhat
+  include: selinux.yml
+  when: ansible_os_family == 'RedHat' and ansible_selinux
+
+# Configure Xinetd if there is a nrpe daemon
+- name: Configure Xinetd
+  include: xinetd.yml
+
+# Reboot the NRPE Server
+- name: Reboot nrpe server
+  service:
+    name: "{{ nagios_nrpe_server_service }}"
+    state: restarted

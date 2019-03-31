@@ -33,8 +33,8 @@ server_port={{ nagios_nrpe_server_port }}
 # Address that nrpe should bind to in case there are more than one interface
 # and you do not want nrpe to bind on all interfaces.
 # NOTE: This option is ignored if NRPE is running under either inetd or xinetd
-
-server_address={{ nagios_nrpe_server_bind_address }}
+# NOTE: This is disabled, enable if you need it.
+# server_address={{ nagios_nrpe_server_bind_address }}
 
 # NRPE USER
 # This determines the effective user that the NRPE daemon should run as.

@@ -1,0 +1,26 @@
+---
+- name: Check that the xinetd nrpe exist
+  stat:
+    path: /etc/xinetd.d/nrpe
+  register: nrpe_xinetd
+
+- name: Check nrpe is running
+  service:
+    name: "{{ nagios_nrpe_server_service }}"
+    state: started
+  register: nrpe_status
+
+- name: Delete nrpe config if config exist and nrpe is down
+  file:
+    path: /etc/xinetd.d/nrpe
+    state: absent
+  when: nrpe_xinetd and nrpe_status.status.ActiveState == 'failed'
+  register: xinetd_status
+
+#- debug: var=xinetd_status.changed
+
+- name: restart xinetd service
+  service: 
+    name: xinetd
+    state: restarted
+  when: xinetd_status.changed
