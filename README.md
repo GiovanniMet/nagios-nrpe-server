@@ -1,6 +1,8 @@
 Nagios NRPE Server Config
 =========
 
+NOTE: this is a fork of: https://github.com/jloh/nagios-nrpe-server i will add support for raid check script and try to fix the problem if a centos server use selinux, for other use the original project.
+
 [![GitHub version](https://badge.fury.io/gh/jloh%2Fnagios-nrpe-server.svg)](http://badge.fury.io/gh/jloh%2Fnagios-nrpe-server) [![CircleCI](https://circleci.com/gh/jloh/nagios-nrpe-server.svg?style=svg)](https://circleci.com/gh/jloh/nagios-nrpe-server)
 
 An Ansible role to handle the installation and rollout of the Nagios NRPE Daemon.
