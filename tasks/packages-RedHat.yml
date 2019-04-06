@@ -1,4 +1,11 @@
 ---
+#Install EPEL repo
+#You need this to install NRPE Server
+- name: Enable EPEL repo
+  yum:
+    name: epel-release
+    state: present
+
 # Nagios NRPE Server for RedHat based OS's
 # The EPEL repo is required for this package
 - name: Install Nagios NRPE Server [RedHat]
