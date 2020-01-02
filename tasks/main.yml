@@ -16,6 +16,7 @@
     owner: root
     group: root
     mode: 0644
+    backup: yes
   notify: restart nagios-nrpe-server
 
 # Create nrpe_ansible.cfg
@@ -26,6 +27,7 @@
     owner: root
     group: root
     mode: 0644
+    backup: yes
   notify: restart nagios-nrpe-server
 
 # Sync our plugins
